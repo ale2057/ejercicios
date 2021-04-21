@@ -1,0 +1,19 @@
+<?php
+$endpoint='latest';
+$access_key="a39c27fd2befd46773fb5af3c3196ab7";
+
+$ch=curl_init('http://data.fixer.io/api/'.$endpoint.'?access_key='.$access_key.'');
+curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+
+$json=curl_exec($ch);
+curl_close($ch);
+
+$change=json_decode($json,true);
+?>
+</br>
+<b>Money change</b>
+</br>
+1 EUR = <?php echo round($change['rates']['USD'],2); ?> USD
+<?php
+
+?>
